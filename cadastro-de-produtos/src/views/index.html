@@ -1,0 +1,27 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Produtos</title>
+  <link rel="stylesheet" href="./public/styles.css">
+</head>
+<body>
+  <h1>Registrar Produto</h1>
+  <form action="/register" method="POST">
+    <label for="name">Nome do Produto:</label>
+    <input type="text" name="name" id="name" required>
+    <br><br>
+    <label for="sale">Preço do Produto:</label>
+    <input type="number" name="sale" id="sale" required>
+    <br><br>
+    <button type="submit">Registrar</button>
+  </form>
+   <!-- Botão para visualizar os produtos registrados -->
+   <a href="/products">
+    <button>Ver Produtos Registrados</button>
+  </a>
+  <script src="../index.js"></script>
+</body>
+</html>

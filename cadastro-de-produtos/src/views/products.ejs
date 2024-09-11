@@ -1,0 +1,42 @@
+<!-- products.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos Registrados</title>
+  <link rel="stylesheet" href="index.css">
+  <script>
+    // Função para enviar requisição DELETE para remover o produto por índice
+    function deleteProduct(index) { // -- requisicao para o backend--
+  fetch(`/delete/${index}`, {
+    method: 'DELETE'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      location.reload(); // Recarrega a página para atualizar a lista de produtos
+    } else {
+      console.error('Erro ao deletar produto:', data.message);
+    }
+  })
+  .catch(error => console.error('Erro:', error));
+}
+
+  </script>
+</head>
+<body>
+  <h1>Lista de Produtos</h1>
+  <ul>
+    <% products.forEach(function(product, index) { %>
+      <li>
+        <span>Nome: <%= product.name %> | Preço: <%= product.sale %></span>
+        <button onclick="deleteProduct(<%= index %>)">Deletar</button>
+      </li>
+    <% }); %>
+  </ul>
+
+  <a href="/">Voltar</a>
+  <script src="../index.js"></script>
+</body>
+</html>
